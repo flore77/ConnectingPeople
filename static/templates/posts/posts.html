@@ -1,0 +1,28 @@
+<div class="row" ng-cloak ng-show="vm.isAuthenticated">
+    <form>
+        <div class="col*-12 posts-center">
+            <input type="text" style="width: 100%!important; height: 30px!important"
+            placeholder="Search" ng-model="vm.search"/>
+        </div>
+    </form>
+    <br/>
+    <br/>
+
+    <div ng-repeat="column in vm.columns">
+        <div class="col*-12 posts-center">
+            <div ng-repeat="post in column | filter: vm.search">
+                <post post="post"></post>
+            </div>
+        </div>
+    </div>
+
+    <div ng-hide="vm.columns && vm.columns.length">
+        <div class="col-sm-12 no-posts-here">
+            <em>The are no posts here.</em>
+        </div>
+    </div>
+</div>
+
+<div ng-show="!vm.isAuthenticated" class="no-posts-here">
+    <h1>Welcome!</h1>
+</div>
